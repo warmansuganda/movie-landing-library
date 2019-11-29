@@ -6,6 +6,31 @@
 
 require('./bootstrap');
 
+require('chart.js');
+require('bootstrap-datepicker');
+require('daterangepicker');
+require('datatables.net');
+require('jquery-form');
+require('waitMe/waitMe.min');
+require('select2');
+require('jquery-numeric');
+require('multiselect/js/jquery.multi-select');
+
+const Swal = window.Swal = require('sweetalert2/dist/sweetalert2.min');
+const toastr = window.toastr = require('toastr');
+
+window.moment = require('moment');
+window.ProgressBar = require('progressbar.js')
+window.Handlebars = require('handlebars/dist/handlebars.min');
+
+Chart.defaults.LineWithLine = Chart.defaults.line;
+Chart.controllers.LineWithLine = Chart.controllers.line.extend({ /* custom magic here */})
+
+/* Helpers */
+require('./helpers/ajax');
+require('./helpers/datatable');
+require('./helpers/common');
+
 window.Vue = require('vue');
 
 /**
