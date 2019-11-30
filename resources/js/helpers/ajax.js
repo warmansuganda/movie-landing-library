@@ -17,14 +17,14 @@
 
 		var default_messages = {
 			confirm: {
-				title: __('helpers.ajax.confirm.title'),
-				text: __('helpers.ajax.confirm.text'),
-				type: 'warning',
+				title: 'Are you sure?',
+				text: 'Data will be saved.',
+				icon: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
 				cancelButtonColor: '#d33',
-				confirmButtonText: __('Ya'),
-				cancelButtonText:__('Tidak')
+				confirmButtonText: 'Yes',
+				cancelButtonText: 'No'
 			},
 			validation: {
 				title: true,
@@ -32,8 +32,8 @@
 				listPosition: 'inline'
 			},
 			success: {
-				title: __('helpers.ajax.success.title'),
-				text: __('helpers.ajax.success.text'),
+				title: 'Success',
+				text: 'Data has been saved',
 				type: 'success',
 			},
             prevent_close: 'Are you sure? Your process will be canceled.'
@@ -45,7 +45,7 @@
 			var errors = data.responseJSON;
 
 			if (data.status == '404') {
-				command: toastr["error"](__('errors.404'));
+				command: toastr["error"]('Page not found');
 				return false;
 			}
 
@@ -189,9 +189,9 @@
                 });
 
 				// refactor messages
-				default_messages.confirm.text = __('helpers.ajax.delete.text');
-				default_messages.success.title = __('helpers.ajax.delete.success.title');
-				default_messages.success.text = __('helpers.ajax.delete.success.text');
+				default_messages.confirm.text = 'You won\'t be able to revert this!';
+				default_messages.success.title ='Success';
+				default_messages.success.text = 'Data has been deleted.';
 
 				var messages = $.extend(true, default_messages, messages);
 
