@@ -125,6 +125,8 @@
                         this.qs2.cache();
                     }
                 });
+
+                $('input[data-toggle="toggle"]').bootstrapToggle()
             },
 
             cbCustomInput: function (e) {

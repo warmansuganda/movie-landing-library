@@ -14,6 +14,7 @@ require('waitMe/waitMe.min');
 require('select2');
 require('jquery-numeric');
 require('multiselect/js/jquery.multi-select');
+require('bootstrap4-toggle/js/bootstrap4-toggle.min');
 
 const Swal = window.Swal = require('sweetalert2/dist/sweetalert2.min');
 const toastr = window.toastr = require('toastr');

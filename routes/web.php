@@ -16,6 +16,9 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/movie', 'MovieController', [
         'names' => 'movie'
     ]);
+    Route::resource('/member', 'MemberController', [
+        'names' => 'member'
+    ]);
 });
 
 Auth::routes();
