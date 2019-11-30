@@ -14,19 +14,19 @@
             <ul class="navbar-nav mr-auto">
                 @auth
                 <li class="nav-item active">
-                    <a class="nav-link" href="/home"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/home"><i class="fa fa-home"></i> {{__('Home')}} <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/movies"><i class="fa fa-film"></i> Movies</a>
+                    <a class="nav-link" href="/movie"><i class="fa fa-film"></i> {{__('Movies')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/members"><i class="fa fa-address-card"></i> Members</a>
+                    <a class="nav-link" href="/member"><i class="fa fa-address-card"></i> {{__('Members')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/lending-movies"><i class="fa fa-edit"></i> Lending</a>
+                    <a class="nav-link" href="/lending-movie"><i class="fa fa-edit"></i> {{__('Lending')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/return-movies"><i class="fa fa-retweet"></i> Return</a>
+                    <a class="nav-link" href="/return-movie"><i class="fa fa-retweet"></i> {{__('Return')}}</a>
                 </li>
                 @endauth
             </ul>

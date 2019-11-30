@@ -43,7 +43,7 @@
                 if (typeof val.id != 'undefined' && val.id == 'add') {
                     def = {
                         icon : '<i class="fas fa-plus"></i>',
-                        title : __("Tambah"),
+                        title : "Add New",
                         className: 'btn btn-primary',
                         modal: '#modal-md',
                         toggle: 'modal'
@@ -161,7 +161,7 @@
                                     if (val.id == 'edit') {
                                         def = {
                                             icon : '<i class="material-icons">edit</i>',
-                                            title : __("Edit"),
+                                            title : "Edit",
                                             className: 'btn btn-white',
                                             modal: '#modal-md',
                                             toggle: 'modal-edit'
@@ -169,7 +169,7 @@
                                     } else if (val.id == 'delete') {
                                         def = {
                                             icon : '<i class="material-icons">delete</i>',
-                                            title : __("Delete"),
+                                            title : "Delete",
                                             className: 'btn btn-white btn-delete'
                                         };
                                     }

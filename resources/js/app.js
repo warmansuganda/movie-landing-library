@@ -7,7 +7,6 @@
 require('./bootstrap');
 
 require('chart.js');
-require('bootstrap-datepicker');
 require('daterangepicker');
 require('datatables.net');
 require('jquery-form');

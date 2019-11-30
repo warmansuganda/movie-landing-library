@@ -2,10 +2,12 @@
 
 @section('content')
 <div class="container">
+    @include('components.page-title', ['breadcrumb' => ['Home']])
+
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Home</div>
+                <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
                     @if (session('status'))
