@@ -13,6 +13,7 @@
 @import '~select2-bootstrap-theme/dist/select2-bootstrap.min';
 @import '~multiselect/css/multi-select';
 @import '~daterangepicker/daterangepicker';
+@import '~bootstrap4-toggle/css/bootstrap4-toggle.min';
 
 @import './datatable';
 // @import './datepicker';
@@ -81,4 +82,12 @@ i.material-icons {
 
 .swal2-container {
   zoom: 0.8;
+}
+
+.toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 16rem; }
+.toggle.ios .toggle-handle { border-radius: 16rem; }
+
+.input-group-text {
+    background-color: #fff;
+    color: #abb6bf;
 }

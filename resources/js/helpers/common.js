@@ -49,7 +49,7 @@
                     showDropdowns: true,
                     autoUpdateInput: false,
                     locale: {
-                        format: 'DD/MMM/YYYY'
+                        format: 'DD/MM/YYYY'
                     }
                 }, function(start_date) {
                     var cb = this.element.attr('data-callback');
@@ -62,7 +62,7 @@
                 $('.form-daterangepicker').daterangepicker({
                     autoUpdateInput: false,
                     locale: {
-                        format: 'DD/MMM/YYYY'
+                        format: 'DD/MM/YYYY'
                     }
                 }, function(start_date, end_date) {
                     var cb = this.element.attr('data-callback');
@@ -125,6 +125,8 @@
                         this.qs2.cache();
                     }
                 });
+
+                $('input[data-toggle="toggle"]').bootstrapToggle()
             },
 
             cbCustomInput: function (e) {
