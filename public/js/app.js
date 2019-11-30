@@ -109074,7 +109074,7 @@ __webpack_require__.r(__webpack_exports__);
         showDropdowns: true,
         autoUpdateInput: false,
         locale: {
-          format: 'DD/MMM/YYYY'
+          format: 'DD/MM/YYYY'
         }
       }, function (start_date) {
         var cb = this.element.attr('data-callback');
@@ -109087,7 +109087,7 @@ __webpack_require__.r(__webpack_exports__);
       $('.form-daterangepicker').daterangepicker({
         autoUpdateInput: false,
         locale: {
-          format: 'DD/MMM/YYYY'
+          format: 'DD/MM/YYYY'
         }
       }, function (start_date, end_date) {
         var cb = this.element.attr('data-callback');
