@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    @include('components.page-title', ['breadcrumb' => ['Home', 'Movies']])
+    @include('components.page-title', ['breadcrumb' => ['Home', 'Lending']])
 
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -38,7 +38,7 @@
                                             <div class="col-sm-9">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+                                                        <span class="input-group-text" id="basic-addon1"><i class="material-icons">date_range</i></span>
                                                     </div>
                                                     <input type="text" class="form-control form-daterangepicker filter-select" name="release_date" id="release_date">
                                                 </div>
@@ -59,11 +59,11 @@
             <div class="card card-small mb-4">
                 <div class="card-body p-0">
                     @include('components.datatables', [
+                        'toolsTable' => false,
                         'id' => 'main-table',
                         'form_filter' => '#form-filter',
                         'header' => ['Title', 'Genre', 'Released Date', 'Created At'],
-                        'data_source' => route($module . '.data'),
-                        'delete_action' => route($module . '.destroys')
+                        'data_source' => route($module . '.data')
                     ])
                 </div>
             </div>
@@ -75,26 +75,16 @@
 @push('scripts')
 <script type="text/javascript">
     var oTable = $('#main-table').myDataTable({
-        buttons: [
-            {
-                id: 'add',
-                modal: '#modal-lg',
-                url: '{{ route($module . ".create") }}'
-            }
-        ],
         actions: [
             {
                 id : 'edit',
+                title: 'Lending',
+                icon : '<i class="material-icons">playlist_add</i>',
                 modal: '#modal-lg',
-                url: '{{ route($module . '.edit', ['movie' => '__grid_doc__']) }}'
-            },
-            {
-                id : 'delete',
-                url: '{{ route($module . '.destroy', ['id' => '__grid_doc__']) }}'
+                url: '{{ route($module . '.create', ['movie_id' => '__grid_doc__']) }}'
             }
         ],
         columns: [
-            {data: 'checkbox'},
             {data: 'title', name:'title'},
             {data: 'genre', name:'genre'},
             {data: 'release_date', name:'release_date', className: 'text-center'},

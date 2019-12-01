@@ -18,5 +18,9 @@ class Movie extends BaseModel
     ];
 
     protected $dates = ['release_date'];
-    
+
+    public function lendings()
+    {
+        return $this->hasMany('App\Lending', 'movie_id');
+    }
 }
