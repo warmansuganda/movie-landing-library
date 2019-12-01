@@ -34,7 +34,7 @@
 
         <div class="form-group row">
             <label for="return_date" class="col-sm-3 col-form-label">{{ __('Return Date') }}<sup>*</sup></label>
-            <div class="col-sm-9">
+            <div class="col-sm-5">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>

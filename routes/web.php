@@ -11,8 +11,17 @@
 |
 */
 Route::middleware(['auth'])->group(function(){
-    Route::get('/', 'HomeController@index');
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', function () {
+        return redirect()->route('home.index');
+    });
+
+    Route::prefix('/home')->name('home.')->group(function () {
+        Route::get('/', 'HomeController@index')->name('index');
+        Route::get('/total-movie', 'HomeController@totalMovie')->name('total-movie');
+        Route::get('/total-member', 'HomeController@totalMember')->name('total-member');
+        Route::get('/lending-chart', 'HomeController@lendingChart')->name('lending-chart');
+    });
+
     Route::resource('/movie', 'MovieController', ['names' => 'movie']);
     Route::resource('/member', 'MemberController', ['names' => 'member']);
     Route::prefix('/lending-movie')->name('lending-movie.')->group(function () {
