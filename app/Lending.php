@@ -15,12 +15,12 @@ class Lending extends BaseModel
         'movie_id',
         'member_id',
         'lending_date',
+        'return_date',
         'returned_date',
-        'returned_date_actual',
         'lateness_charge'
     ];
 
-    protected $dates = ['lending_date', 'returned_date', 'returned_date_actual'];
+    protected $dates = ['lending_date', 'return_date', 'returned_date'];
 
     public function movie()
     {

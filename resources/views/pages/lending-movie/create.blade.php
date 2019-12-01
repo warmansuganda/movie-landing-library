@@ -3,7 +3,7 @@
 @section('title', __('Form Lending'))
 
 @section('content')
-    {{ Form::open(['id' => 'my-form', 'route' => [$module . '.store', encrypt($data->id)], 'method' => 'put', 'autocomplete' => 'off']) }}
+    {{ Form::open(['id' => 'my-form', 'route' => [$module . '.store'], 'method' => 'post', 'autocomplete' => 'off']) }}
     <input type="hidden" name="movie_id" value="{{$data->id}}">
     <div class="modal-body">
 
@@ -33,13 +33,13 @@
         </div>
 
         <div class="form-group row">
-            <label for="returned_date" class="col-sm-3 col-form-label">{{ __('Returned Date') }}<sup>*</sup></label>
+            <label for="return_date" class="col-sm-3 col-form-label">{{ __('Return Date') }}<sup>*</sup></label>
             <div class="col-sm-9">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
                     </div>
-                    <input type="text" class="form-control form-datepicker" name="returned_date" id="returned_date">
+                    <input type="text" class="form-control form-datepicker" name="return_date" id="return_date">
                 </div>
             </div>
         </div>

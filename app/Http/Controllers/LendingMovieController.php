@@ -26,7 +26,7 @@ class LendingMovieController extends Controller
         $query = Movie::data();
 
         $query->whereDoesntHave('lendings', function ($query) {
-            $query->whereNull('returned_date_actual');
+            $query->whereNull('returned_date');
         });
 
         $results = \DataTables::of($query)
@@ -94,7 +94,7 @@ class LendingMovieController extends Controller
         $validator = \Validator::make($data, [
             'movie_id'      => 'required',
             'member_id'     => 'required',
-            'returned_date' => 'required|date_format:d/m/Y',
+            'return_date' => 'required|date_format:d/m/Y',
         ]);
 
         if ($validator->fails()) {
@@ -104,7 +104,7 @@ class LendingMovieController extends Controller
                 'movie_id'      => $data['movie_id'],
                 'member_id'     => $data['member_id'],
                 'lending_date'  => date('Y-m-d'),
-                'returned_date' => \Carbon\Carbon::createFromFormat('d/m/Y', $data['returned_date'])->format('Y-m-d')
+                'return_date' => \Carbon\Carbon::createFromFormat('d/m/Y', $data['return_date'])->format('Y-m-d')
             ]);
         }
     }

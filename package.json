@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "add": "^2.0.6",
+        "autonumeric": "^4.5.10",
         "bootstrap4-toggle": "^3.6.1",
         "chart.js": "^2.9.3",
         "datatables.net": "^1.10.20",
