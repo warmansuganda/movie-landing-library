@@ -19,6 +19,7 @@ require('bootstrap4-toggle/js/bootstrap4-toggle.min');
 const Swal = window.Swal = require('sweetalert2/dist/sweetalert2.min');
 const toastr = window.toastr = require('toastr');
 
+window.AutoNumeric = require('AutoNumeric');
 window.moment = require('moment');
 window.ProgressBar = require('progressbar.js')
 window.Handlebars = require('handlebars/dist/handlebars.min');

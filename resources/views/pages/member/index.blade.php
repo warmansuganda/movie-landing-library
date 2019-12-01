@@ -28,7 +28,7 @@
                                         <div class="form-group row">
                                             <label for="is_active" class="col-sm-3 col-form-label">{{ __('Status') }}</label>
                                             <div class="col-sm-9">
-                                                {{ Form::select('is_active', ['' => '-All-', '1' => 'Active', '0' => 'Inactive'], '', ['class' => 'form-control filter-select']) }}
+                                                {{ Form::select('is_active', ['' => '-All-', '1' => 'Active', '0' => 'Inactive'], '', ['class' => 'form-control filter-select select2', 'data-search' => 'false']) }}
                                             </div>
                                         </div>
                                     </div>

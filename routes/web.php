@@ -20,7 +20,14 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/data', 'LendingMovieController@data')->name('data');
         Route::get('/members', 'LendingMovieController@members')->name('members');
         Route::get('/{movie_id}/create', 'LendingMovieController@create')->name('create');
-        Route::put('/store', 'LendingMovieController@store')->name('store');
+        Route::post('/store', 'LendingMovieController@store')->name('store');
+    });
+
+    Route::prefix('/return-movie')->name('return-movie.')->group(function () {
+        Route::get('/', 'ReturnMovieController@index')->name('index');
+        Route::get('/data', 'ReturnMovieController@data')->name('data');
+        Route::get('/{id}/edit', 'ReturnMovieController@edit')->name('edit');
+        Route::put('/{id}/update', 'ReturnMovieController@update')->name('update');
     });
 });
 

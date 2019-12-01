@@ -16,7 +16,7 @@
                         <div class="col">
                             {{ Form::open(['id' => 'form-filter', 'autocomplete' => 'off']) }}
                                 <div class="form-row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group row">
                                             <label for="code" class="col-sm-3 col-form-label">{{ __('Title') }}</label>
                                             <div class="col-sm-9">
@@ -24,7 +24,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group row">
                                             <label for="genre" class="col-sm-3 col-form-label">{{ __('Genre') }}</label>
                                             <div class="col-sm-9">
@@ -32,7 +32,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group row">
                                             <label for="release_date" class="col-sm-3 col-form-label">{{ __('Released Date') }}</label>
                                             <div class="col-sm-9">
