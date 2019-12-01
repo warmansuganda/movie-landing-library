@@ -26,7 +26,8 @@
                         <div class="col-sm-8">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Total Movies</h5>
+                                    <h5 class="card-title text-center mb-0">Lending Chart</h5>
+                                    <h6 class="card-title text-center">{{ date('Y') }}</h6>
                                     <canvas id="myChart" height="130"></canvas>
                                 </div>
                             </div>
@@ -38,7 +39,7 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">Total Movies</h5>
-                                            <h1>10</h1>
+                                            <h1 id="total-movie">-</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -46,7 +47,7 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">Total Members</h5>
-                                            <h1>10</h1>
+                                            <h1 id="total-member">-</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -62,44 +63,48 @@
 
 @push('scripts')
 <script type="text/javascript">
-$(function () {
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
+    var getTotal = function(container, url) {
+        $.get(url, function(out) {
+            $(container).html(out)
+        }, 'json');
+    }
+
+    var lendingChart = function() {
+        $.get('{{ route('home.lending-chart') }}', function(out) {
+            console.log(out)
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: out.labels,
+                    datasets: [{
+                        label: '# of Lending',
+                        data: out.datas,
+                        backgroundColor: '#027bff4f',
+                        borderColor: '#027bff4f',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
                     }
-                }]
-            }
-        }
-    });
+                }
+            });
+        }, 'json');
+    }
+</script>
+
+<script type="text/javascript">
+$(function () {
+    getTotal('#total-movie', '{{ route('home.total-movie') }}');
+    getTotal('#total-member', '{{ route('home.total-member') }}');
+
+    lendingChart();
 })
 </script>
 @endpush
