@@ -128,7 +128,7 @@
         customRow: function(row, data) {
             if (data.returned_date !== '-'){
                 $('td:eq(6)', row).html('<i class="material-icons">done_all</i>');
-                $('td:eq(4)', row).html(`Has been returned at ${moment(data.returned_date, "DD/MM/YYYY").fromNow()}`).addClass('text-success');
+                $('td:eq(4)', row).html(`Has been returned at ${data.returned_date}`).addClass('text-success');
             } else {
                 if (moment().diff(moment(data.return_date, "DD/MM/YYYY"), 'days') > 0) {
                     $('td:eq(4)', row).html('Not been returned').addClass('text-danger');
