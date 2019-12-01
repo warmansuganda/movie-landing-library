@@ -23,4 +23,8 @@ class Member extends BaseModel
 
     protected $dates = ['dob', 'join_date'];
 
+    public function lendings()
+    {
+        return $this->hasMany('App\Lending', 'member_id');
+    }
 }

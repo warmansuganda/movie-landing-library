@@ -6,7 +6,7 @@
     {{ Form::open(['id' => 'my-form', 'route' => [$module . '.update', encrypt($data->id)], 'method' => 'put', 'autocomplete' => 'off']) }}
     <div class="modal-body">
         <div class="form-group row">
-            <label for="title" class="col-sm-3 col-form-label">{{ __('Kode') }}<sup>*</sup></label>
+            <label for="title" class="col-sm-3 col-form-label">{{ __('Title') }}<sup>*</sup></label>
             <div class="col-sm-9">
                 <input type="text" class="form-control" name="title" id="title" value="{{ $data->title }}">
             </div>
@@ -19,7 +19,7 @@
         </div>
         <div class="form-group row">
             <label for="release_date" class="col-sm-3 col-form-label">{{ __('Release Date') }}<sup>*</sup></label>
-            <div class="col-sm-9">
+            <div class="col-sm-5">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>

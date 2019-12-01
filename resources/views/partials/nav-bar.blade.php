@@ -15,19 +15,19 @@
             <ul class="navbar-nav mr-auto">
                 @auth
                 <li class="nav-item active">
-                    <a class="nav-link" href="/home"><i class="fa fa-home"></i> {{__('Home')}} <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/home"><i class="material-icons">home</i> {{__('Home')}} <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/movie"><i class="fa fa-film"></i> {{__('Movies')}}</a>
+                    <a class="nav-link" href="/movie"><i class="material-icons">movie</i> {{__('Movies')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/member"><i class="fa fa-address-card"></i> {{__('Members')}}</a>
+                    <a class="nav-link" href="/member"><i class="material-icons">perm_identity</i> {{__('Members')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/lending-movie"><i class="fa fa-edit"></i> {{__('Lending')}}</a>
+                    <a class="nav-link" href="/lending-movie"><i class="material-icons">playlist_add</i> {{__('Lending')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/return-movie"><i class="fa fa-retweet"></i> {{__('Return')}}</a>
+                    <a class="nav-link" href="/return-movie"><i class="material-icons">repeat</i> {{__('Return')}}</a>
                 </li>
                 @endauth
             </ul>

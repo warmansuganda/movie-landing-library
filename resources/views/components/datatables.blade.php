@@ -6,6 +6,7 @@
        data-auto-filter="true">
     <thead>
 	    <tr>
+            @if(!isset($toolsTable) || $toolsTable)
             <th class="toolsTable no-sort">
                 <div class="btn-group">
                     <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -19,6 +20,8 @@
                     </div>
                 </div>
             </th>
+            @endif
+            
 	    	@if (isset($header) && count($header) > 0)
 	    		@foreach($header as $key => $value)
 		    		<th>{{ __($value) }}</th>

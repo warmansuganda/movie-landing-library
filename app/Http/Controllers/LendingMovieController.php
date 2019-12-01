@@ -4,24 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movie;
+use App\Member;
+use App\Lending;
 
-class MovieController extends Controller
+class LendingMovieController extends Controller
 {
     public function __construct()
     {
         view()->share([
-            'module' => 'movie'
+            'module' => 'lending-movie'
         ]);
     }
 
     public function index()
     {
-        return view('pages.movie.index', []);
+        return view('pages.lending-movie.index', []);
     }
 
     public function data(Request $request)
     {
         $query = Movie::data();
+
+        $query->whereDoesntHave('lendings', function ($query) {
+            $query->whereNull('returned_date_actual');
+        });
 
         $results = \DataTables::of($query)
             ->filter(function($query) use ($request) {
@@ -40,9 +46,6 @@ class MovieController extends Controller
             ->addColumn('id', function($query) {
                 return encrypt($query->id);
             })
-            ->addColumn('checkbox', function($query) {
-                return true;
-            })
             ->addColumn('release_date', function($query) {
                 return $query->release_date ? $query->release_date->format('d/m/Y') : '-' ;
             })
@@ -54,78 +57,56 @@ class MovieController extends Controller
         return response()->json($results);
     }
 
-    public function create()
+    public function members(Request $request)
     {
-        return view('pages.movie.create', []);
+        $keyword = $request->input('q');
+        $page = $request->input('page');
+
+        $members = Member::isActive()->whereLike('name', $keyword);
+        $total_count = $members->count();
+
+        $offset = 0;
+        if (!empty($page) && $page > 1) {
+            $offset = ($page - 1) * 30;
+        }
+
+        $items = $members->offset($offset)->limit(30)->get();
+
+        return response()->json([
+            'total_count' => $total_count,
+            'items' => $items
+        ]);
+    }
+
+    public function create($id)
+    {
+        $data = Movie::find(decrypt($id));
+        if ($data) {
+            return view('pages.lending-movie.create', ['data' => $data]);
+        }
+
+        return abort(404);
     }
 
     public function store(Request $request)
     {
         $data = $request->all();
         $validator = \Validator::make($data, [
-            'title' => 'required|max:255',
-            'genre' => 'required',
-            'release_date' => 'required|date_format:d/m/Y',
+            'movie_id'      => 'required',
+            'member_id'     => 'required',
+            'returned_date' => 'required|date_format:d/m/Y',
         ]);
 
         if ($validator->fails()) {
             return $this->responseError($validator->errors(), 422, 'Unprocessable Entity');
         } else {
-            return Movie::createOne([
-                'title'        => $data['title'],
-                'genre'        => $data['genre'],
-                'release_date' => \Carbon\Carbon::createFromFormat('d/m/Y', $data['release_date'])->format('Y-m-d')
+            return Lending::createOne([
+                'movie_id'      => $data['movie_id'],
+                'member_id'     => $data['member_id'],
+                'lending_date'  => date('Y-m-d'),
+                'returned_date' => \Carbon\Carbon::createFromFormat('d/m/Y', $data['returned_date'])->format('Y-m-d')
             ]);
         }
     }
 
-    public function edit($id)
-    {
-        $data = Movie::find(decrypt($id));
-        if ($data) {
-            return view('pages.movie.edit', ['data' => $data]);
-        }
-
-        return abort(404);
-    }
-
-    public function update(Request $request, $id)
-    {
-        $data = $request->all();
-
-        $validator = \Validator::make($data, [
-            'title' => 'required|max:255',
-            'genre' => 'required',
-            'release_date' => 'required|date_format:d/m/Y',
-        ]);
-
-        if ($validator->fails()) {
-            return $this->responseError($validator->errors(), 422, 'Unprocessable Entity');
-        } else {
-            return Movie::updateOne(decrypt($id), [
-                'title'        => $data['title'],
-                'genre'        => $data['genre'],
-                'release_date' => \Carbon\Carbon::createFromFormat('d/m/Y', $data['release_date'])->format('Y-m-d')
-            ]);
-        }
-    }
-
-    public function destroy(Request $request, $id)
-    {
-        return Movie::deleteOne(decrypt($id));
-    }
-
-    public function destroys(Request $request)
-    {
-        $data = $request->all();
-
-        $id = [];
-        foreach ($data['_id'] as $value) {
-            $id[] = decrypt($value);
-        }
-
-        return Movie::transaction(function() use ($id) {
-            return Movie::deleteBatch($id);
-        });
-    }
 }

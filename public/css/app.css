@@ -16912,3 +16912,35 @@ i.material-icons {
   color: #abb6bf;
 }
 
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 36px;
+}
+
+.select2-container .select2-selection--single {
+  height: calc(1.6em + 0.75rem + 2px);
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: calc(1.6em + 0.75rem + 2px);
+  right: 6px;
+}
+
+.select2-results__option--highlighted .select2-result-repository__forks,
+.select2-results__option--highlighted .select2-result-repository__stargazers,
+.select2-results__option--highlighted .select2-result-repository__description,
+.select2-results__option--highlighted .select2-result-repository__watchers {
+  color: #c6dcef;
+}
+
+.select2-result-repository__description {
+  font-size: 13px;
+  color: #777;
+  margin-top: 4px;
+}
+
+.select2-result-repository__more {
+  display: inline-block;
+  color: #aaa;
+  font-size: 11px;
+}
+

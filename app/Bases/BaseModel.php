@@ -215,7 +215,7 @@ class BaseModel extends Model
 
     public function scopeIsActive($query)
     {
-        $query->where('status', 1);
+        $query->where('is_active', 1);
         return $query;
     }
 
