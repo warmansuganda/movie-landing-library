@@ -120,7 +120,7 @@ var formatOptionsSelection = function (option) {
             },
             cache: true
         },
-        placeholder: 'Search for a repository',
+        placeholder: 'Search for a member',
         minimumInputLength: 1,
         templateResult: formatOptions,
         templateSelection: formatOptionsSelection
