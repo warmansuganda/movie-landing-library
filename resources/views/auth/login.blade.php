@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <h3 class="text-center mb-4">Movie Lending Library</h3>
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
